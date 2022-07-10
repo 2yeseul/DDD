@@ -1,12 +1,12 @@
 package com.example.ddd.ch1_4.domain
 
 class Order(
-    var state: OrderState,
-    var shippingInfo: ShippingInfo,
+    private var state: OrderState,
+    private var shippingInfo: ShippingInfo,
 ) {
 
     // 배송지 변경 관련 도메인 규칙 구현
-    fun isShippingChangeable(): Boolean =
+    private fun isShippingChangeable(): Boolean =
         state == OrderState.PAYMENT_WAITING || state == OrderState.PREPARING
 
     // 실제 배송지 정보를 변경하는 메서드
